@@ -7,20 +7,19 @@ body {
   h1 {
     display: flex;
     justify-content: center;
-    border: 1px solid black
-    
   }
   
   .workingArea {
     display: flex;
     flex-direction: row;
     margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
   
   .tools {
     display: flex;
     flex-direction: column;
-    background-color: gold;
+    background-color: #FFDCA3;
     width: 200px;
     padding: 80px 30px;
   }

@@ -1,4 +1,4 @@
-var input = 4;
+var input = 16;
 repeatBox();
 let eraser = false;
 let rainbow = false
@@ -28,6 +28,7 @@ function rainbowMode() {
 
 
 function changeColor(event) {
+  
   if (eraser == false) {
     event.target.style.backgroundColor = "#181818"
   }
@@ -43,15 +44,21 @@ function changeColor(event) {
   }
 };
 
+  function mouseUp() {
+}
+
 function singleBox() {
   
   let box = document.createElement("div")
   box.classList.add("box");
   box.style.backgroundColor = "ghostwhite";
-  box.style.border = "0.1px solid #E0E0E0";
+  box.style.border = "0.001px solid #E8E8E8";
+  
+  
   box.addEventListener("click", changeColor);
-  box.addEventListener("onmousedown", changeColor);
-  box.addEventListener("onmouseover", changeColor);
+  box.addEventListener("mousedown", changeColor);
+  box.addEventListener("mouseover", changeColor);
+  box.removeEventListener("mouseup", changeColor);
  
   let drawingPad = document.querySelector(".drawingPad");
   drawingPad.appendChild(box);
