@@ -5,43 +5,47 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Picasso</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="etch-a-sketch.js" defer></script>
 </head>
 
   
 <body>
-  <h1> Draw and Guess! </h1>
+ 
+  <h1> Draw and Guess!</h1>
+  
   
   <div class="workingArea">
   
     <div class="tools">
       <div class="gridInput">
-        <div> Create custom grid</div>
+        <div> Create Custom Grid</div>
         <input id="text1" placeholder="Boxes per row. (Max: 100)">
         <br>
-        <button onlick="fncustom()" id="btn1">Submit</button>
+        <button onclick="fncustom()" id="btn1">Submit</button>
       </div>
       <br>
       <div class="customGrid"> 
         <div>Choose Standard Grid</div>
-        <button onlick="getbox16()">16 X 16 Grid</button>
+        <button onclick="getbox16()">16 X 16 Grid</button>
         <br>
-        <button onlick="getbox32()">32 X 32 Grid</button>
+        <button onclick="getbox32()">32 X 32 Grid</button>
         <br>
-        <button onlick="getbox64()">64 X 64 Grid</button>
+        <button onclick="getbox64()">64 X 64 Grid</button>
         <br>
-        <button onlick="getbox100()">100 X 100 Grid</button>
+        <button onclick="getbox100()">100 X 100 Grid</button>
       </div>
-      
-      
-      <div class="penButton">penButton</div>
-      <div class="eraser">eraser</div>
-      <div class="penColor">penColor</div>
+      <br>
+      <div class="customGrid"> 
+        <div>Choose Pen Or Eraser</div>
+        <button onclick="penMode()">Black Pen</button>
+        <br>
+        <button onclick="rainbowMode()">Rainbow Pen</button>
+        <br>
+        <button onclick="eraserMode()">Eraser</button>
+      </div>
     </div>
-
-    <div class ="drawingPad"></div>
   
+    <div class ="drawingPad"></div>
+  </div>
 
   
   

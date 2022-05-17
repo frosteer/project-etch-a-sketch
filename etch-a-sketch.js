@@ -1,50 +1,57 @@
 var input = 4;
 repeatBox();
-
-function fncustom() {
-  input  = document.getElementById("text1").value;
-  repeatBox()
-}
-
-function getbox16() {
-  input  = 16;
-  repeatBox()
-  alert("getbox16")
-}
-
-
-function getbox32() {
-  input  = 32;
-  repeatBox()
-}
-
-function getbox64() {
-  input  = 64;
-  repeatBox()
-}
-
-function getbox100() {
-  input  = 100;
-  repeatBox()
-}
+let eraser = false;
+let rainbow = false
 
 let boxNum = input**2;
-let boxSize = 960/input;
-let sizeNum = boxSize + "px";
-let repeatNum = "repeat(" + input + ", 1fr)";
-
-
+var boxSize = 960/input;
+var sizeNum = boxSize + "px";
+var repeatNum = "repeat(" + input + ", 1fr)";
 
 let drawingPad = document.querySelector(".drawingPad");
 drawingPad.style.gridTemplateColumns= repeatNum;
 
+function penMode() {
+  eraser = false
+}
+
+function eraserMode() {
+  eraser = true;
+  console.log("eraser on");
+};
+
+function rainbowMode() {
+  eraser = false
+  rainbow = true
+}
+
+
+
+function changeColor(event) {
+  if (eraser == false) {
+    event.target.style.backgroundColor = "#181818"
+  }
+
+  if (eraser == true) {
+    rainbow = false
+    event.target.style.backgroundColor = "ghostwhite"
+  }
+  
+  if (rainbow == true) {
+     const randomColor = Math.floor(Math.random()*16777215).toString(16);
+     event.target.style.backgroundColor = "#" + randomColor;
+  }
+};
 
 function singleBox() {
   
   let box = document.createElement("div")
   box.classList.add("box");
-  box.style.backgroundColor = "grey";
-  box.style.border = "1px solid black";
+  box.style.backgroundColor = "ghostwhite";
+  box.style.border = "0.1px solid #E0E0E0";
+  box.addEventListener("click", changeColor);
+  box.addEventListener("onmousedown", changeColor);
+  box.addEventListener("onmouseover", changeColor);
  
   let drawingPad = document.querySelector(".drawingPad");
   drawingPad.appendChild(box);
@@ -60,12 +67,70 @@ function repeatBox(){
   }
 }
 
+function myFunction() {
+  alert("Hello World");
+}
+
+function fncustom() {
+  let drawingPad = document.querySelector(".drawingPad");
+  drawingPad.replaceChildren("");
+  input  = document.getElementById("text1").value;
+    if (input > 100){ 
+      alert("Please enter a number lesser than 100");
+      getbox16();
+      
+      } else {
+    if (input <= 100){
+      var repeatNum = "repeat(" + input + ", 1fr)";
+      drawingPad.style.gridTemplateColumns= repeatNum;
+      repeatBox()
+    }
+}}
+
+function getbox16() {
+  let drawingPad = document.querySelector(".drawingPad");
+  drawingPad.replaceChildren("");
+  input  = 16;
+  var repeatNum = "repeat(" + input + ", 1fr)";
+  drawingPad.style.gridTemplateColumns= repeatNum;
+  repeatBox()
+}
+
+
+function getbox32() {
+  let drawingPad = document.querySelector(".drawingPad");
+  drawingPad.replaceChildren("");
+  input  = 32;
+  var repeatNum = "repeat(" + input + ", 1fr)";
+  drawingPad.style.gridTemplateColumns= repeatNum;
+  repeatBox()
+}
+
+function getbox64() {
+  let drawingPad = document.querySelector(".drawingPad");
+  drawingPad.replaceChildren("");
+  input  = 64;
+  var repeatNum = "repeat(" + input + ", 1fr)";
+  drawingPad.style.gridTemplateColumns= repeatNum;
+  repeatBox()
+}
+
+function getbox100() {
+  let drawingPad = document.querySelector(".drawingPad");
+  drawingPad.replaceChildren("");
+  input  = 100;
+  var repeatNum = "repeat(" + input + ", 1fr)";
+  drawingPad.style.gridTemplateColumns= repeatNum;
+  repeatBox()
+}
+
+let targetBox = document.querySelector(".drawingPad div");
 
 
 
 
-  
-  
+
+
   
   
   
