@@ -13,6 +13,7 @@ drawingPad.style.gridTemplateColumns= repeatNum;
 
 function penMode() {
   eraser = false
+  rainbow = false
 }
 
 function eraserMode() {
@@ -25,6 +26,15 @@ function rainbowMode() {
   rainbow = true
 }
 
+let hoverDraw = false
+
+function onHoverBox() {
+  hoverDraw = true
+}
+
+function offHoverBox() {
+  hoverDraw = false
+}
 
 
 function changeColor(event) {
@@ -55,10 +65,22 @@ function singleBox() {
   box.style.border = "0.001px solid #E8E8E8";
   
   
-  box.addEventListener("click", changeColor);
-  box.addEventListener("mousedown", changeColor);
-  box.addEventListener("mouseover", changeColor);
-  box.removeEventListener("mouseup", changeColor);
+  
+  box.addEventListener("mousedown", function change(event) {
+   onHoverBox();
+   changeColor(event);
+  });
+  
+  box.addEventListener("mouseenter", function continueDraw(event) {
+    if (hoverDraw == true){
+      changeColor(event);
+    }
+  })
+  
+  box.addEventListener("mouseup", function offDraw(event) {
+    offHoverBox();
+    console.log("ok")
+  });
  
   let drawingPad = document.querySelector(".drawingPad");
   drawingPad.appendChild(box);
